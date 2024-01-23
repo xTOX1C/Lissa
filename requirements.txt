@@ -1,0 +1,3 @@
+asyncio
+requests
+git+https://github.com/xTOX1C/modified-sdk.git
