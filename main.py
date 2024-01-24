@@ -74,22 +74,13 @@ class Bot(BaseBot):
             await self.highrise.chat("Reconnected...")
 
             while True:
-                # Check and cancel existing task if it's running for sending individual emotes
-                if hasattr(self, 'send_emote_task') and not self.send_emote_task.done():
-                    self.send_emote_task.cancel()
-    
                 random_key = random.choice(list(self.emotes.keys()))
                 random_emote = self.emotes[random_key]
-    
-                # Run the new task for sending individual emotes
-                self.send_emote_task = asyncio.create_task(self.highrise.send_emote(random_emote))
+                await self.highrise.send_emote(random_emote)
                 await asyncio.sleep(10)
-    
-        except asyncio.CancelledError:
-            # Catch the CancelledError to handle task cancellation
-            print("Task canceled.")
+
         except Exception as e:
-            print(f"error: {e}")
+            print(f"error : {e}")
 
     async def on_user_join(self, user: User, position: Position | AnchorPosition) -> None:
         try:
