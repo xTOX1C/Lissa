@@ -238,6 +238,7 @@
     "jinglehop": "dance-jinglebell",
     "hyped": "emote-hyped",
     "flirt": "emote-lust",
+    "repose": "sit-relaxed",
     "fight": "emote-swordfight",
     "nervous": "idle-nervous"
 }
